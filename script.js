@@ -12,34 +12,6 @@ document.addEventListener("click", function (e) {
   }
 });
 
-// ========== Dark / Light Mode Toggle ==========
-const themeBtn = document.createElement("button");
-themeBtn.id = "themeToggle";
-themeBtn.style.position = "fixed";
-themeBtn.style.bottom = "20px";
-themeBtn.style.right = "20px";
-themeBtn.style.padding = "8px 12px";
-themeBtn.style.borderRadius = "8px";
-themeBtn.style.cursor = "pointer";
-themeBtn.style.zIndex = "9999";
-
-function applyTheme(t) {
-  document.documentElement.setAttribute("data-theme", t);
-  localStorage.setItem("theme", t);
-}
-const saved = localStorage.getItem("theme") ||
-  (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-applyTheme(saved);
-themeBtn.textContent = saved === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode";
-
-themeBtn.addEventListener("click", () => {
-  const current = document.documentElement.getAttribute("data-theme");
-  const next = current === "dark" ? "light" : "dark";
-  applyTheme(next);
-  themeBtn.textContent = next === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode";
-});
-document.body.appendChild(themeBtn);
-
 // ========== Back to Top Button ==========
 const topBtn = document.createElement("button");
 topBtn.id = "backToTop";
@@ -83,3 +55,4 @@ fadeTargets.forEach(el => observer.observe(el));
 document.querySelectorAll("img").forEach(img => {
   if (!img.getAttribute("loading")) img.setAttribute("loading", "lazy");
 });
+
